@@ -25,7 +25,7 @@ func main() {
 		log.Fatal("PORT environment is not set")
 	}
 
-	db, err := sql.Open("sqlite3", "keylogger")
+	db, err := sql.Open("sqlite3", "lucy_db")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -35,10 +35,6 @@ func main() {
 	apicfg := tp.ApiConf{
 		DB: dbQuery,
 	}
-
-	/* loginHandler := &handler.LoginUserHandler{
-		ApiCfg: apicfg,
-	} */
 
 	countHandler := &handler.CounterHandler{
 		ApiCfg: apicfg,
@@ -50,7 +46,7 @@ func main() {
 
 	v1 := chi.NewRouter()
 	v1.Post("/increment", auth.MiddlewareAuth(&apicfg, countHandler.IncrementCounter))
-/* 	v1.Get("/login", loginHandler.LoginUser); */
+	v1.Get("/login", countHandler.LoginUser);
 	v1.Get("/counter", countHandler.GetCounter)
 
 	r.Mount("/v1", v1)

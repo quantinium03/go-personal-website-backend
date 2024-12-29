@@ -4,21 +4,24 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"time"
 
+	"github.com/mini-projects/keylogger-server/internal/database"
 	"github.com/mini-projects/keylogger-server/internal/tp"
 	"github.com/mini-projects/keylogger-server/utils"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type CounterHandler struct {
 	ApiCfg tp.ApiConf
 }
 
-/* type parameters struct {
+type parameters struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-} */
+};
 
-/* func (cfg *LoginUserHandler) LoginUser(w http.ResponseWriter, r *http.Request) {
+func (cfg *CounterHandler) LoginUser(w http.ResponseWriter, r *http.Request) {
 	params := parameters{}
 	err := json.NewDecoder(r.Body).Decode(&params)
 	if err != nil {
@@ -48,7 +51,7 @@ type CounterHandler struct {
 	}
 
 	utils.RespondWithJson(w, http.StatusOK, utils.DatabaseUserToUser(user))
-} */
+}
 
 func (cfg *CounterHandler) IncrementCounter(w http.ResponseWriter, r *http.Request) {
 	count, err := cfg.ApiCfg.DB.GetCounter(r.Context())
