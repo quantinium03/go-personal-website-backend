@@ -9,3 +9,9 @@ type ApiConf struct {
 type CounterParameters struct {
 	Counter int64 `json:"counter"`
 }
+
+type MouseStats struct {
+	MouseDistance int64 `json:"MouseDistance"`
+	LeftClick int64 `json:"leftClick"`
+	RightClick int64 `json:"rightClick"`
+}

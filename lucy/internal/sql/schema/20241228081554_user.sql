@@ -1,5 +1,5 @@
 -- +goose Up
-create table user (
+create table if not exists user (
     id integer primary key autoincrement,
     username text not null,
     userhash text not null,

@@ -48,6 +48,8 @@ func main() {
 	v1.Post("/increment", auth.MiddlewareAuth(&apicfg, countHandler.IncrementCounter))
 	v1.Get("/login", countHandler.LoginUser);
 	v1.Get("/counter", countHandler.GetCounter)
+	v1.Post("/mouse_update", auth.MiddlewareAuth(&apicfg, countHandler.UpdateMouseStats))
+	v1.Get("/mouse", countHandler.GetMouseStats)
 
 	r.Mount("/v1", v1)
 

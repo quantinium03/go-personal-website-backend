@@ -13,6 +13,13 @@ type Counter struct {
 	Counter int64
 }
 
+type Mouse struct {
+	ID            int64
+	Mousedistance int64
+	Leftclick     int64
+	Rightclick    int64
+}
+
 type User struct {
 	ID        int64
 	Username  string

@@ -1,6 +1,6 @@
 -- +goose Up
 -- +goose StatementBegin
-create table counter (
+create table if not exists counter (
     id int primary key,
     counter int not null default 0
 );
