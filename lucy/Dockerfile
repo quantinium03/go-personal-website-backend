@@ -19,7 +19,7 @@ COPY . .
 
 # Install goose
 RUN go install github.com/pressly/goose/v3/cmd/goose@latest
-RUN goose -dir=internal/sql/schema sqlite3 lucy_db up
+RUN goose -dir=internal/sql/schema sqlite3 lucy_db.sqlite up
 
 # Install sqlc and generate SQL code
 RUN go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest

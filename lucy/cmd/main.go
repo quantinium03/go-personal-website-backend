@@ -25,7 +25,7 @@ func main() {
 		log.Fatal("PORT environment is not set")
 	}
 
-	db, err := sql.Open("sqlite3", "lucy_db")
+	db, err := sql.Open("sqlite3", "lucy_db.sqlite")
 	if err != nil {
 		log.Fatal(err)
 	}
